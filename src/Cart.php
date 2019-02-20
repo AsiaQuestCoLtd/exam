@@ -13,6 +13,7 @@ class Cart
 
     public function add(Element $element)
     {
+        // add comment
         $this->elements[] = $element;
     }
 
