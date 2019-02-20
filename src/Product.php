@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace Src;
+
+use Src\Validate;
 
 class Product
 {
@@ -14,13 +16,22 @@ class Product
         $this->price = $price;
     }
 
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function getPrice(): int
-    {
-        return $this->price;
+    public function __get($data){
+        return $this->$data;
     }
 }
+
+/*class Product extends Validate{
+    protected $title;
+    protected $price;
+    public function init($title,$price){
+        if($this->CheckStr($title,1,255)){
+            $this->title=$title;
+        }
+        if($this->CheckNum($price,0,9999)){
+            $this->price=$price;
+        }
+    }
+}*/
+
+
