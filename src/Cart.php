@@ -2,6 +2,8 @@
 
 namespace Src;
 
+use Src\Validate;
+
 class Cart
 {
     protected $elements = [];
@@ -13,9 +15,13 @@ class Cart
 
     public function add(Element $element)
     {
-        $this->elements[] = $element;
+        //検証用クラス、商品をカートに追加する前に、商品データのチェック行う。
+        $validate=new Validate;
+        if($validate->CheckProduct($element)){
+            $this->elements[] = $element;    
+        }
     }
-    public function show()
+    /*public function show()
     {
         if (empty($this->elements)) {
             $result = 'お客様のショッピングカートに商品はありません。';
@@ -44,8 +50,8 @@ class Cart
         print_r($result);
         echo "</pre>";
         return $result;
-    }
-    /*public function show()
+    }*/
+    public function show()
     {
         if (empty($this->elements)) {
             $result = 'お客様のショッピングカートに商品はありません。';
@@ -54,18 +60,17 @@ class Cart
             $totalQuantity = 0;
 
             $result = '';
+            //元々商品数が空のチャックを外した。カートに追加する際に、追加商品に対してチェックしたからです。
             foreach ($this->elements as $element) {
-                if (! $element->quantity) {
-                    continue;
-                } else {
-                    $title=$element->title;
-                    $price=$element->price;
-                    $quantity=$element->quantity;
+                //商品情報出す
+                $title=$element->title;
+                $price=$element->price;
+                $quantity=$element->quantity;
 
-                    $result .= $title . "\t" . $price . "\t" . $quantity . "\n";
-                    $amount += $element->getAmount();
-                    $totalQuantity += $quantity;
-                }
+                //出力結果不変が、見やすくなりました。
+                $result .= $title . "\t" . $price . "\t" . $quantity . "\n";
+                $amount += $element->getAmount();
+                $totalQuantity += $quantity;
             }
 
             if ($totalQuantity) {
@@ -78,6 +83,11 @@ echo "<pre>";
 print_r($result);
 echo "</pre>";
         return $result;
-    }*/
+    }
+
+    //カート初期化
+    public function init(){
+        $this->elements=[];
+    }
 
 }

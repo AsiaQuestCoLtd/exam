@@ -2,9 +2,7 @@
 
 namespace Src;
 
-use Src\Validate;
-
-class Product
+/*class Product
 {
     private $title;
 
@@ -19,19 +17,24 @@ class Product
     public function __get($data){
         return $this->$data;
     }
-}
+}*/
 
-/*class Product extends Validate{
+//商品に関する親クラス。
+class Product{
     protected $title;
     protected $price;
-    public function init($title,$price){
-        if($this->CheckStr($title,1,255)){
+    public function __construct($title,$price){
+        //検証用クラス読み込み
+        $validate=new Validate;
+
+        //タイトルと価額を設定する、ここで、条件をチェックする。
+        if($validate->CheckStr($title,1,255)){
             $this->title=$title;
         }
-        if($this->CheckNum($price,0,9999)){
+        if($validate->CheckNum($price,0,9999)){
             $this->price=$price;
         }
     }
-}*/
+}
 
 

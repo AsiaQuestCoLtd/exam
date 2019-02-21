@@ -2,6 +2,9 @@
 namespace Src;
 class Validate{
     public function CheckNum($data,$min,$max){
+        if($data==""){
+            return false;
+        }
         if($min<=$data&&$max>=$data){
             return true;
         }else{
@@ -9,6 +12,9 @@ class Validate{
         }
     }
     public function CheckStr($data,$min,$max){
+        if($data==""){
+            return false;
+        }
         $length=mb_strlen($data, 'UTF-8');
         if($min<=$length&&$max>=$length){
             return true;
@@ -17,11 +23,11 @@ class Validate{
         }
     }
 
-    /*public function Checkdata($title,$price,$quantity){
-        if($this->CheckStr($title,1,255)&&$this->CheckNum($price,0,99999)&&$this->CheckNum($quantity,1,9)){
+    public function CheckProduct($product){
+        if($this->CheckNum($product->quantity,1,9)&&$this->CheckNum($product->price,0,99999)&&$this->CheckStr($product->title,1,255)){
             return true;
         }else{
             return false;
         }
-    }*/
+    }
 }
