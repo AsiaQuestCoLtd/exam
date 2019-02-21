@@ -2,23 +2,6 @@
 
 namespace Src;
 
-/*class Product
-{
-    private $title;
-
-    private $price;
-
-    public function __construct(string $title, int $price)
-    {
-        $this->title = $title;
-        $this->price = $price;
-    }
-
-    public function __get($data){
-        return $this->$data;
-    }
-}*/
-
 //商品に関する親クラス。
 class Product{
     protected $title;

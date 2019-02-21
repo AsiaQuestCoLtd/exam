@@ -4,23 +4,6 @@ namespace Src;
 
 use Src\Product;
 
-/*class Element
-{
-    private $product;
-
-    private $quantity;
-
-    public function __construct(Product $product, int $quantity)
-    {
-        $this->product = $product;
-        $this->quantity = $quantity;
-    }
-
-    public function __get($data){
-        return $this->$data;
-    }
-}*/
-
 //親クラス：Productの形に設定しました。
 //この書き方は元より良いなのか、悪いなのか、よく判断できない。
 //extendsを使用する原因は：ElementはProductの変数を全部使うことが可能ので、extendsを使った方が良いと思います。

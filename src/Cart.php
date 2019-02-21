@@ -7,7 +7,9 @@ use Src\Validate;
 class Cart
 {
     protected $elements = [];
-
+    //カートに対して、金額と数量はよく使われる物なので、メソッドから取り出した。
+    protected $amount = 0;
+    protected $totalQuantity = 0;
     public function __construct(array $elements = [])
     {
         $this->elements = $elements;
@@ -21,44 +23,12 @@ class Cart
             $this->elements[] = $element;    
         }
     }
-    /*public function show()
-    {
-        if (empty($this->elements)) {
-            $result = 'お客様のショッピングカートに商品はありません。';
-        } else {
-            $amount = 0;
-            $totalQuantity = 0;
-
-            $result = '';
-            foreach ($this->elements as $element) {
-                if (! $element->quantity){
-                    continue;
-                } else {
-                    $result .= $element->product->title . "\t" . $element->product->price . "\t" . $element->quantity . "\n";
-                    $amount += $element->product->price * $element->quantity;
-                    $totalQuantity += $element->quantity;
-                }
-            }
-
-            if ($totalQuantity) {
-                $result .= '小計 ('.$totalQuantity.' 点): \\'.$amount;
-            } else {
-                $result = 'お客様のショッピングカートに商品はありません。';
-            }
-        }
-        echo "<pre>";
-        print_r($result);
-        echo "</pre>";
-        return $result;
-    }*/
+    
     public function show()
     {
         if (empty($this->elements)) {
             $result = 'お客様のショッピングカートに商品はありません。';
         } else {
-            $amount = 0;
-            $totalQuantity = 0;
-
             $result = '';
             //元々商品数が空のチャックを外した。カートに追加する際に、追加商品に対してチェックしたからです。
             foreach ($this->elements as $element) {
@@ -69,12 +39,12 @@ class Cart
 
                 //出力結果不変が、見やすくなりました。
                 $result .= $title . "\t" . $price . "\t" . $quantity . "\n";
-                $amount += $element->getAmount();
-                $totalQuantity += $quantity;
+                $this->amount += $element->getAmount();
+                $this->totalQuantity += $quantity;
             }
 
-            if ($totalQuantity) {
-                $result .= '小計 ('.$totalQuantity.' 点): \\'.$amount;
+            if ($this->totalQuantity) {
+                $result .= '小計 ('.$this->totalQuantity.' 点): \\'.$this->amount;
             } else {
                 $result = 'お客様のショッピングカートに商品はありません。';
             }
@@ -88,6 +58,8 @@ echo "</pre>";
     //カート初期化
     public function init(){
         $this->elements=[];
+        $this->amount = 0;
+        $this->totalQuantity = 0;
     }
 
 }
