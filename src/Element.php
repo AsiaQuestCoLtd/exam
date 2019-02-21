@@ -4,9 +4,9 @@ namespace Src;
 
 use Src\Product;
 
-//親クラス：Productの形に設定しました。
+//親クラス：Productに設定しました。
 //この書き方は元より良いなのか、悪いなのか、よく判断できない。
-//extendsを使用する原因は：ElementはProductの変数を全部使うことが可能ので、extendsを使った方が良いと思います。
+//継承を使用する原因は：ElementはProductの変数を全部使うことが可能ので、extendsを使った方が良いと思います。
 //まだ、パラメータの呼び出し、商品に関する設定も簡単にできると思います。
 class Element extends Product{
     
