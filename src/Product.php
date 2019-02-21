@@ -14,7 +14,7 @@ class Product{
         if($validate->CheckStr($title,1,255)){
             $this->title=$title;
         }
-        if($validate->CheckNum($price,0,9999)){
+        if($validate->CheckNum($price,0,99999)){
             $this->price=$price;
         }
     }

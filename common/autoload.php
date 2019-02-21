@@ -2,6 +2,7 @@
 function readClass($class_name){
     $class_name=strtolower($class_name);
     $class=explode("\\",$class_name);
+    $path="";
     foreach($class as $key => $val){
         if($key!=count($class)-1){
             $path.=$val."/";
