@@ -4,19 +4,32 @@ namespace App;
 
 class Cart
 {
+    /**
+     * @var array
+     */
     protected $elements = [];
 
+    /**
+     * Cart constructor.
+     * @param array $elements
+     */
     public function __construct(array $elements = [])
     {
         $this->elements = $elements;
     }
 
-    public function add(Element $element)
+    /**
+     * @param Element $element
+     */
+    public function add(Element $element): void
     {
         $this->elements[] = $element;
     }
 
-    public function show()
+    /**
+     * @return string
+     */
+    public function show(): string
     {
         if (empty($this->elements)) {
             $result = 'お客様のショッピングカートに商品はありません。';
@@ -26,7 +39,7 @@ class Cart
 
             $result = '';
             foreach ($this->elements as $element) {
-                if (! $element->getQuantity()) {
+                if (!$element->getQuantity()) {
                     continue;
                 } else {
                     $result .= $element->getProduct()->getTitle() . "\t" . $element->getProduct()->getPrice() . "\t" . $element->getQuantity() . "\r\n";
@@ -36,12 +49,11 @@ class Cart
             }
 
             if ($totalQuantity) {
-                $result .= '小計 ('.$totalQuantity.' 点): \\'.$amount;
+                $result .= '小計 (' . $totalQuantity . ' 点): \\' . $amount;
             } else {
                 $result = 'お客様のショッピングカートに商品はありません。';
             }
         }
-
         return $result;
     }
 }
