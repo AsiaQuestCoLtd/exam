@@ -57,7 +57,7 @@ class ExampleTest extends TestCase
         $arrProduct[] = array(
             "title"=>"",
             "price"=>100,
-            "quantity"=>0
+            "quantity"=>5
         );
 
         $result   = $this->CreateCartShow($arrProduct);
@@ -68,7 +68,7 @@ class ExampleTest extends TestCase
         $arrProduct[] = array(
             "title"=>"Amazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイドAmazon Web Services 業務システム設計・移行ガイド",
             "price"=>100,
-            "quantity"=>0
+            "quantity"=>5
         );
 
         $result   = $this->CreateCartShow($arrProduct);
