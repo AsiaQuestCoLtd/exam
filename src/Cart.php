@@ -46,9 +46,9 @@ class Cart
         /**
          * 変数の初期化
          * 
-         * @var int    $amount   商品価格合計
-         * @var int    $totalQuantity 商品点数合計
-         * @var string $result   カート内の商品情報
+         * @var int    $amount         商品価格合計
+         * @var int    $totalQuantity  商品点数合計
+         * @var string $result         カート内の商品情報
          */
         $amount = 0;
         $totalQuantity = 0;
@@ -79,7 +79,7 @@ class Cart
         // 商品点数の合計＞０の場合、商品価格合計と商品点数合計を商品情報に追加
         if ($totalQuantity) {
             $result .= '小計 ('.$totalQuantity.' 点): \\'.$amount;
-        // それ以外の場合、カート内に商品がない旨のメッセージ
+        // それ以外の場合、カート内に商品がない旨のメッセージをセット
         } else {
             $result = self::NO_ITEMS_IN_SHOPPING_CART;
         }
